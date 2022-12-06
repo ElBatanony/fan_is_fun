@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963831388420",
+    "project_id": "fanisfun-test",
+    "storage_bucket": "fanisfun-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963831388420:android:12dc7c60f254ba497cd851",
+        "android_client_info": {
+          "package_name": "com.example.course_example_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963831388420-vomtijao1b1o1d3saj13185o072rehit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3hxsoFoV9tsIrm83PYORA04uFWHvfW3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963831388420-vomtijao1b1o1d3saj13185o072rehit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -23,10 +23,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -50,20 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAwFWO6fvq8j3VP93nt7MB1gMHbLsjH3_8',
-    appId: '1:864602908897:web:6f16848ccdd9122b582fa0',
-    messagingSenderId: '864602908897',
-    projectId: 'soar-quest-test',
-    authDomain: 'soar-quest-test.firebaseapp.com',
-    storageBucket: 'soar-quest-test.appspot.com',
-    measurementId: 'G-PGF7TJWZCL',
+    apiKey: 'AIzaSyDnAGY3zqBbdB_FBwu10uz0wyfg06KiIE4',
+    appId: '1:963831388420:web:9cf2a4e0fcf2cd987cd851',
+    messagingSenderId: '963831388420',
+    projectId: 'fanisfun-test',
+    authDomain: 'fanisfun-test.firebaseapp.com',
+    storageBucket: 'fanisfun-test.appspot.com',
+    measurementId: 'G-VFVMFBQMS3',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBDzf4dybC0SNQoOxGqRX5jjDLDSa8rsj0',
-    appId: '1:864602908897:android:330f33d917cceacc582fa0',
-    messagingSenderId: '864602908897',
-    projectId: 'soar-quest-test',
-    storageBucket: 'soar-quest-test.appspot.com',
+    apiKey: 'AIzaSyA3hxsoFoV9tsIrm83PYORA04uFWHvfW3E',
+    appId: '1:963831388420:android:12dc7c60f254ba497cd851',
+    messagingSenderId: '963831388420',
+    projectId: 'fanisfun-test',
+    storageBucket: 'fanisfun-test.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAKrZ-mJ-i9D2P0ODRukMvb8J45SVmKQAU',
+    appId: '1:963831388420:ios:ccdee1578e8ab1457cd851',
+    messagingSenderId: '963831388420',
+    projectId: 'fanisfun-test',
+    storageBucket: 'fanisfun-test.appspot.com',
+    iosClientId: '963831388420-qe5lc368qmjnfse68u57bombf4vitl60.apps.googleusercontent.com',
+    iosBundleId: 'com.example.courseExampleApp',
   );
 }
