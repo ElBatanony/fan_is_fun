@@ -2,6 +2,7 @@
 
 import 'dart:html';
 
+import 'package:course_example_app/timer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,13 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       appBar: AppBar(title: Text('SignUp'), backgroundColor: Colors.orange),
       resizeToAvoidBottomInset: false,
+      floatingActionButton: FloatingActionButton(
+        child: Text("Skip"),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Countdown()));
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(50),
@@ -316,7 +324,13 @@ class _MainPageState extends State<MainPage> {
         title: Text("Main Page"),
       ),
       body: Container(
-        child: Text(email),
+        child: ElevatedButton(
+          child: Text("Go to the timer"),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Countdown()));
+          },
+        ),
       ),
     );
   }
