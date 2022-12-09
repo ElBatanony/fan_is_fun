@@ -2,9 +2,9 @@
 
 import 'dart:html';
 
+import 'package:course_example_app/support.dart';
 import 'package:course_example_app/timer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
           );
         } else {
           return Scaffold(
-            body: Container(),
+            body: Container(
+              child: Support(),
+            ),
           );
         }
       },
@@ -56,8 +58,8 @@ class _SignUpState extends State<SignUp> {
       floatingActionButton: FloatingActionButton(
         child: Text("Skip"),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const Countdown()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Support()));
         },
       ),
       body: SingleChildScrollView(
