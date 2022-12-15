@@ -163,13 +163,17 @@ class _SignUpState extends State<SignUp> {
                     'Sign up',
                     style: TextStyle(fontSize: 30),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     FireAuth.registerUsingEmailPassword(
                         name: name, email: email, password: password);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainPage()));
+
+                    final isLoggedIn = await FireAuth.signInUser(
+                        email: email, password: password);
+
+                    if (isLoggedIn) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MyWidget()));
+                    }
                   },
                 ),
                 height: 50,
@@ -269,10 +273,8 @@ class LogIn extends StatelessWidget {
                 final isLoggedIn =
                     await FireAuth.signInUser(email: email, password: password);
                 if (isLoggedIn) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MainPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyWidget()));
                 }
               },
             ),
@@ -332,6 +334,25 @@ class _MainPageState extends State<MainPage> {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Countdown()));
           },
+        ),
+      ),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var email = FirebaseAuth.instance.currentUser!.email;
+    print("here1");
+    return Scaffold(
+      appBar: AppBar(title: Text("User Loged in")),
+      body: Container(
+        child: Text(
+          "$email",
+          style: TextStyle(fontSize: 20),
         ),
       ),
     );

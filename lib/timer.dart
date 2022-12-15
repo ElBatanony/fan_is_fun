@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'dart:async';
 import 'package:lottie/lottie.dart';
 
+import 'package:quiver/async.dart';
+
 class Countdown extends StatefulWidget {
   const Countdown({super.key});
 
@@ -12,11 +14,13 @@ class Countdown extends StatefulWidget {
 }
 
 class _CountdownState extends State<Countdown> {
-  late Timer _timer;
+  // late Timer _timer;
   int _start = 80;
+  int _current = 0;
   int _minutes = 0;
-  double _seconds = 0;
+  int _seconds = 0;
 
+/*
   void startTimer() {
     print("i started");
     const oneSec = const Duration(seconds: 1);
@@ -31,23 +35,40 @@ class _CountdownState extends State<Countdown> {
         } else {
           setState(() {
             _start--;
-            _minutes = _start ~/ 60;
-            _seconds = _start / 1 % 60;
+            print(" start - $_start");
+            _minutes = Duration(seconds: _start).inMinutes;
+            _seconds = _start % 60;
           });
         }
       },
     );
   }
+*/
 
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
+  void startTimer() {
+    CountdownTimer countDownTimer = new CountdownTimer(
+      new Duration(seconds: _start),
+      new Duration(seconds: 1),
+    );
+
+    var sub = countDownTimer.listen(null);
+    sub.onData((duration) {
+      setState(() {
+        _current = _start - duration.elapsed.inSeconds;
+        print("current - $_current");
+        _minutes = Duration(seconds: _current).inMinutes;
+        _seconds = _current % 60;
+      });
+    });
+
+    sub.onDone(() {
+      print("Done");
+      sub.cancel();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    startTimer();
     return Scaffold(
       appBar: AppBar(title: Text("Timer test")),
       body: Padding(
@@ -86,7 +107,15 @@ class _CountdownState extends State<Countdown> {
               SizedBox(
                 height: 50,
               ),
-              Lottie.asset('waiting.json', width: 300, height: 300)
+              Lottie.asset('waiting.json', width: 300, height: 300),
+              SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    startTimer();
+                  },
+                  child: Text("Press"))
             ],
           ),
         ),
